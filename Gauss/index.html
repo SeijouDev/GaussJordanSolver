@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <script type="text/javascript" src = "scripts/logic.js"></script>
+    <link rel="stylesheet" type="text/css" href="styles/styles.css">
+    <title>Matrix Solver</title>
+</head>
+
+<body>
+    <div id="container">
+        <div id="MatrixSizeContainer">
+            <label>Dimensión</label>
+            <input type="number" id="sizeInput" value="3"/>
+            <button onclick="setMatrixSize()">Cambiar tamaño</button>
+        </div>        
+        <div id="MatrixInputContainer"></div>        
+    </div>
+    <button onclick="startGaussJordan()">Calcular</button>
+</body> 
+</html>
