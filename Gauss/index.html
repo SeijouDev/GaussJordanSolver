@@ -4,21 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    
     <script type="text/javascript" src = "scripts/logic.js"></script>
     <link rel="stylesheet" type="text/css" href="styles/styles.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <title>Matrix Solver</title>
 </head>
 
 <body>
     <div id="container">
-        <div id="MatrixSizeContainer">
-            <label>Dimensión</label>
-            <input type="number" id="sizeInput" value="3"/>
-            <button onclick="setMatrixSize()">Cambiar tamaño</button>
-        </div>        
-        <div id="MatrixInputContainer"></div>        
+        <div class="col-sm-6 col-sm-offset-3">
+            <h1 class="title">Gauss Jordan</h1>
+            <div id="MatrixSizeContainer">
+                <label>Dimensión</label>
+                <select name="sizeInput" id="sizeInput" onchange="setMatrixSize()">
+                    <option value="2">2 x 2</option>
+                    <option value="3">3 x 3</option>
+                    <option value="4">4 x 4</option>
+                    <option value="5">5 x 5</option>
+                </select>
+            </div> 
+            <div id="MatrixInputContainer"></div>
+            <button class="btn btn-success" onclick="startGaussJordan()">Calcular</button>
+        </div>
     </div>
-    <button onclick="startGaussJordan()">Calcular</button>
+    
+    <div class="container">
+        <div class="col-sm-4 col-sm-offset-4">
+            <div id="operationOutput"></div>
+        </div>
+    </div>
 </body> 
 </html>

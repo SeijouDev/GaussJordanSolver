@@ -23,7 +23,8 @@ function setMatrixSize(){
 
           let input = document.createElement('input');
           input.type = 'number';
-          input.id = `input_${i + 1}${j + 1}`;       
+          input.className = "valueInput";
+          input.id = `input_${i + 1}${j + 1}`;
           container.appendChild(input);
 
         }
@@ -86,6 +87,7 @@ function operatePivot(row_a ,name_a , row_b , name_b){
   let sum = differentSymbol(pivot1 , pivot2);
   let newRow = [];
   let mult;  
+  let str;
 
   if( ( pivot1 / pivot2 ) % 1 === 0 ) {  
     
@@ -97,17 +99,20 @@ function operatePivot(row_a ,name_a , row_b , name_b){
       let num2 = row_b[i];
             
       if(sum){
-        res = (mult * num2) + (num1); 
-        console.log(mult +''+ name_b + ' + ' + name_a);
+        res = (mult * num2) + (num1);
+        str = '<h2>' + mult +''+ name_b + ' + ' + name_a + '</h2>';
       }     
       else {
         res = (mult * num2) - (num1);
-        console.log(mult +''+ name_b + ' - ' + name_a);
+        str = '<h2>' + mult +''+ name_b + ' - ' + name_a +'</h2>';
       }
          
       newRow.push(res);
-      
+
     }
+    
+    outputDOM(str);
+    
   }
   else if ( pivot1 !== 0 && ( pivot2 / pivot1 ) % 1 === 0 ) {
     mult =  Math.abs(pivot2 / pivot1);
@@ -118,15 +123,18 @@ function operatePivot(row_a ,name_a , row_b , name_b){
             
       if(sum){
         res = num2 + (mult * num1);
-        console.log(name_b  + ' + ' + mult +''+ name_a);
+        str = '<h2>' + name_b  + ' + ' + mult +''+ name_a + '</h2>';
       }
       else{
         res = num2 - (mult * num1);
-        console.log(name_b  + ' - ' + mult +''+ name_a);  
+        str = '<h2>' + name_b  + ' - ' + mult +''+ name_a + '</h2>';  
       }    
 
       newRow.push(res);
     }
+    
+    outputDOM(str);
+    
   }
   else {
         
@@ -140,14 +148,17 @@ function operatePivot(row_a ,name_a , row_b , name_b){
     
       if(sum){
         res = (mult1 * num2) + (mult2 * num1);
-        console.log(mult1 +''+name_b  + ' + ' + mult2 +''+name_a);
+        str = '<h2>' + mult1 +''+name_b  + ' + ' + mult2 +''+name_a + '</h2>';
       }
       else{ 
         res = (mult1 * num2) - (mult2 * num1);
-        console.log(mult1 +''+name_b  + ' - ' + mult2 +''+name_a);
+        str = '<h2>' + mult1 +''+name_b  + ' - ' + mult2 +''+name_a + '</h2>';
       }
       newRow.push(res);
     }
+    
+    outputDOM(str);
+    
   }
 
   return newRow;
@@ -165,7 +176,7 @@ function setRow(row , row_number){
 
 function divideRow(row , divider , row_name){
   var res = [];
-  console.log(row_name+"/"+divider);
+  outputDOM('<h2>' + row_name + "/" + divider + '</h2>')
   for(let i = 0 ; i < n ; i++){
     res.push(row[i]/divider);
   }
@@ -178,7 +189,8 @@ function fixNumber(num){
 
 function showResult(matrix){
   for(let i = 0 ; i < m ; i++){
-    console.log("X"+(i+1)+": " + fixNumber(matrix[i][n-1]));
+    let str = "X"+(i+1)+": " + fixNumber(matrix[i][n-1]);
+    outputDOM('<h3>' + str +'</h3>');
   }
 }
 
@@ -188,9 +200,14 @@ function printMatrix(matrix){
     for(let j = 0 ; j < n  ; j++){
       str += "|\t" + matrix[i][j] + "\t|";      
     }    
-    console.log(str);
+    outputDOM('<p class="outputMatriz">' + str +'</p>');
   }
-  console.log("------------------------------------------------");
+}
+
+function outputDOM(str){
+  let operationOutput = document.getElementById("operationOutput");
+  operationOutput.innerHTML += str;
+  operationOutput.appendChild(document.createElement('br'));
 }
 
 
