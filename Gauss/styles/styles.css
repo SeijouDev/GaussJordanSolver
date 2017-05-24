@@ -9,3 +9,7 @@
 .outputMatriz{
     font-size: 1.5rem;
 }
+
+#operationOutput{
+    margin-top: 5%;
+}

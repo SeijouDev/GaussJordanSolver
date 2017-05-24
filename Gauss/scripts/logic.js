@@ -210,6 +210,11 @@ function outputDOM(str){
   operationOutput.appendChild(document.createElement('br'));
 }
 
+function clearInputs(){
+  document.getElementById('MatrixInputContainer').reset();
+  document.getElementById('operationOutput').innerHTML = "";
+}
+
 
 
 
