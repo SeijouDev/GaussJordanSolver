@@ -1,2 +1,5 @@
-# GaussJordanSolver
-Solve matrix mxn by Gauss Jordan method.
+# Operaciones de matrices
+* Marlon Castillo
+* Steven Medina
+* Jessica
+* Kevin Rodríguez

@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Suma y resta de matrices</title>
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script type="text/javascript" src="js/main.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4 col-sm-offset-4">
+                <h1 class="title">Suma y resta de matrices</h1>
+                <div id="MatrixSizeContainer">
+                    <label>Filas:</label>
+                    <select name="rowInput" id="rowInput" onchange="setMatrixSize()">
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                    <label>Columnas:</label>
+                    <select name="columnInput" id="columnInput" onchange="setMatrixSize()">
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                    <label>Operación:</label>
+                    <select name="operation" id="operation">
+                        <option value="0">Suma</option>
+                        <option value="1">Resta</option>
+                    </select>
+                </div> 
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div id="MatrixContainer" class="col-sm-6">
+                <center><form id="MatrixInputContainer1" name= "MatrixInputContainer"></form></center>
+            </div>
+            <div id="MatrixContainer" class="col-sm-6">
+                <center><form id="MatrixInputContainer2" name= "MatrixInputContainer"></form></center>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <center>
+                <button class="btn btn-success" onclick="output()">Calcular</button>
+                <button class="btn btn-danger" onclick="clearInputs()">Limpiar</button>
+            </center>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4 col-sm-offset-4">
+                <center><form id="MatrixOutContainer" name="MatrixOutContainer"></form></center>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

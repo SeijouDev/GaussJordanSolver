@@ -1,0 +1,19 @@
+.title{
+    text-align: center;
+}
+
+.valueInput{
+    margin: 5px !important;
+    width: 60px;
+    height: 40px;
+    border-radius: 5px;
+    border: 1px solid #999;
+}
+
+.outputMatriz{
+    font-size: 1.5rem;
+}
+
+#operationOutput{
+    margin-top: 5%;
+}
