@@ -5,36 +5,207 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script type="text/javascript" src = "scripts/logic.js"></script>
+    <!-- Bootstrap Core CSS -->
+    <link href="styles/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="styles/simple-sidebar.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="styles/styles.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <title>Matrix Solver</title>
+    <title>Calculadora matrices</title>
 </head>
 
-<body>
-    <div id="container">
-        <div class="col-sm-6 col-sm-offset-3">
-            <h1 class="title">Gauss Jordan</h1>
-            <div id="MatrixSizeContainer">
-                <label>Dimensión</label>
-                <select name="sizeInput" id="sizeInput" onchange="setMatrixSize()">
-                    <option value="2">2 x 2</option>
-                    <option value="3">3 x 3</option>
-                    <option value="4">4 x 4</option>
-                    <option value="5">5 x 5</option>
-                </select>
-            </div> 
-            <div id="MatrixContainer">
-                <form id="MatrixInputContainer" name= "MatrixInputContainer"></form>
-            </div>
-            <button class="btn btn-success" onclick="startGaussJordan()">Calcular</button>
-            <button class="btn btn-danger" onclick="clearInputs()">Limpiar</button>
+<body> 
+
+     <div id="wrapper">
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand"><a>Calculadora matrices</a></li>
+                <li><a onclick='MenuItemSelected(0)'>Gauss Jordan</a></li>
+                <li><a onclick='MenuItemSelected(1)'>Matriz Inversa</a></li>
+                <li><a onclick='MenuItemSelected(2)'>Suma / Resta</a></li>
+                <!-- <li><a onclick='MenuItemSelected(3)'>Multiplicación</a></li> -->
+                <li><a onclick='MenuItemSelected(4)'>Transpuesta</a></li>
+            </ul>
         </div>
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div id="div0">
+                            <h1>Gauss Jordan</h1>
+
+                            <div id="MatrixSizeContainer">
+
+                                <label>Dimensión</label>
+                                <select name="sizeInput" id="sizeInput" onchange="setMatrixSize()">
+                                    <option value="2">2 x 2</option>
+                                    <option value="3">3 x 3</option>
+                                    <option value="4">4 x 4</option>
+                                    <option value="5">5 x 5</option>
+                                </select>
+                            </div> 
+
+                            <div id="MatrixContainer">
+                                <form id="MatrixInputContainer" name= "MatrixInputContainer"></form>
+                            </div>
+                            <button class="btn btn-success" onclick="startGaussJordan()">Calcular</button>
+                            <button class="btn btn-danger" onclick="clearInputs()">Limpiar</button>
+                        </div>
+
+                        <div id="div1">
+                            <h1>Matriz Inversa</h1>
+                            <div id="MatrixSizeContainer">
+
+                                <label>Dimensión</label>
+                                <select name="sizeInputInverse" id="sizeInputInverse" onchange="setMatrixSizeInverse()">
+                                    <option value="2">2 x 2</option>
+                                    <option value="3">3 x 3</option>
+                                    <option value="4">4 x 4</option>
+                                    <option value="5">5 x 5</option>
+                                </select>
+                            </div> 
+
+                            <div id="MatrixContainer">
+                                <form id="MatrixInputContainerInverse" name= "MatrixInputContainerInverse"></form>
+                            </div>
+                            <button class="btn btn-success" onclick="startInverse()">Calcular</button>
+                            <button class="btn btn-danger" onclick="clearInputs()">Limpiar</button>
+                        </div>
+
+                        <div id="div2">
+
+                            <h1>Suma / Resta</h1>
+
+                            <div id="MatrixSizeContainer">
+                                <label>Filas:</label>
+                                <select name="rowInput" id="rowInput" onchange="setMatrixSizeSR()">
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                </select>
+                                <label>Columnas:</label>
+                                <select name="columnInput" id="columnInput" onchange="setMatrixSizeSR()">
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                </select>
+                                <label>Operación:</label>
+                                <select name="operation" id="operation">
+                                    <option value="0">Suma</option>
+                                    <option value="1">Resta</option>
+                                </select>
+                            </div> 
+
+                             <div class="container">
+                                <div class="row">
+                                    <div id="MatrixContainer" class="col-sm-6">
+                                        <center><form id="MatrixInputContainer1" name= "MatrixInputContainer"></form></center>
+                                    </div>
+                                    <div id="MatrixContainer" class="col-sm-6">
+                                        <center><form id="MatrixInputContainer2" name= "MatrixInputContainer"></form></center>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="container">
+                                <div class="row">
+                                    <center>
+                                        <button class="btn btn-success" onclick="output()">Calcular</button>
+                                        <button class="btn btn-danger" onclick="clearInputs()">Limpiar</button>
+                                    </center>
+                                </div>
+                            </div>
+                            
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-sm-6 col-sm-offset-3">
+                                        <center><form id="MatrixOutContainer" name="MatrixOutContainer"></form></center>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="div3">
+                            <h1>Multiplicación</h1>
+                        </div>
+
+                        <div id="div4">
+                            <h1>Transpuesta</h1>
+
+                            <div id="MatrixSizeContainer">
+                                <label>Filas:</label>
+                                <select name="rowInput" id="rowInputT" onchange="setMatrixSizeT()">
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                </select>
+                                <label>Columnas:</label>
+                                <select name="columnInput" id="columnInputT" onchange="setMatrixSizeT()">
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                </select>
+                                
+                            </div> 
+
+                             <div class="container">
+                                <div class="row">
+                                    <div id="MatrixContainer" class="col-sm-6 col-sm-offset-3">
+                                        <center><form id="MatrixInputContainer1T" name= "MatrixInputContainer"></form></center>
+                                    </div>                                  
+                                </div>
+                            </div>
+                            <div class="container">
+                                <div class="row">
+                                    <center>
+                                        <button class="btn btn-success" onclick="TransMatrix()">Calcular</button>
+                                        <button class="btn btn-danger" onclick="clearInputs()">Limpiar</button>
+                                    </center>
+                                </div>
+                            </div>
+                            
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-sm-6 col-sm-offset-3">
+                                        <center><form id="MatrixOutContainerT" name="MatrixOutContainer"></form></center>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>                       
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div> 
+
+   
+
+       
+      
+        
     </div>
     
     <div class="container">
-        <div class="col-sm-4 col-sm-offset-4">
+        <div class="col-sm-10 col-sm-offset-2">
             <div id="operationOutput"></div>
         </div>
     </div>
+
+    <script src="scripts/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="scripts/bootstrap.min.js"></script>
+
+    <!-- Menu Toggle Script -->
+    <script>
+    $(document).ready(function() {
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
 </body> 
 </html>
