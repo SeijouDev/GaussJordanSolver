@@ -23,13 +23,12 @@ function setMatrixSize(){
         container1.appendChild(document.createElement('br'));
         
         for(let j = 0; j < n ; j++){
-
           let input = document.createElement('input');
           input.type = 'number';
           input.className = "valueInput";
+          input.value = 0;
           input.id = `input_${i + 1}${j + 1}`;
           container1.appendChild(input);
-
         }
       }
       
@@ -46,6 +45,7 @@ function setMatrixSize(){
           let input = document.createElement('input');
           input.type = 'number';
           input.className = "valueInput";
+          input.value = 0;
           input.id = `input_${i + 1}${j + 1}`;
           container2.appendChild(input);
 
