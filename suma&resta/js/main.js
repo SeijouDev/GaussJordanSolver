@@ -1,18 +1,19 @@
 var matrix = [];
-//var matrixTemp = [];
 var pivot = 0;
 var m = 0;//Rows
 var n = 0; //Columns
 
-document.addEventListener("DOMContentLoaded", function(event) { setMatrixSize();});
+document.addEventListener("DOMContentLoaded", function(event) { 
+    setMatrixSize();
+});
 
 function setMatrixSize(){
     pivot = 0;
-    m = Number(document.getElementById('rowInput').value);
-    n = Number(document.getElementById('columnInput').value);
-    let container1 = document.getElementById('MatrixInputContainer1');
-    let container2 = document.getElementById('MatrixInputContainer2');
-    let outputContainer = document.getElementById('MatrixOutContainer');
+    m = Number(getById('rowInput').value);
+    n = Number(getById('columnInput').value);
+    let container1 = getById('MatrixInputContainer1');
+    let container2 = getById('MatrixInputContainer2');
+    let outputContainer = getById('MatrixOutContainer');
     
     while(container1.firstChild)
       container1.removeChild(container1.firstChild);  
@@ -75,7 +76,7 @@ function setMatrixSize(){
 
 function matrices(elementDOM) {
 
-  let form = document.getElementById(elementDOM) || document.forms[0];
+  let form = getById(elementDOM) || document.forms[0];
   var elems = form.elements;
   
   var serialized = [], i, len = elems.length;
@@ -84,7 +85,7 @@ function matrices(elementDOM) {
   
     var element = elems[i];
     var value = parseInt(element.value);
-    
+      
     serialized.push(value);
       
   }
@@ -97,9 +98,8 @@ function sum(){
     let matriz1 = matrices('MatrixInputContainer1');
     let matriz2 = matrices('MatrixInputContainer2');
     let resultMatriz = [];
-    for(var i = 0; i < matriz1.length; i++){
+    for(var i = 0; i < matriz1.length; i++)
         resultMatriz.push(matriz1[i] + matriz2[i]);
-    }
     return resultMatriz;
 }
 
@@ -107,19 +107,18 @@ function res(){
     let matriz1 = matrices('MatrixInputContainer1');
     let matriz2 = matrices('MatrixInputContainer2');
     let resultMatriz = [];
-    for(var i = 0; i < matriz1.length; i++){
+    for(var i = 0; i < matriz1.length; i++)
         resultMatriz.push(matriz1[i] - matriz2[i]);
-    }
     return resultMatriz;
 }
 
 function output(){
-    let form = document.getElementById('MatrixOutContainer') || document.forms[0];
+    let form = getById('MatrixOutContainer') || document.forms[0];
     var elems = form.elements;
     var serialized = [];
     let len = elems.length;
     let result = [];
-    let operation = document.getElementById('operation').value;
+    let operation = getById('operation').value;
     if(operation == "0"){
         result = sum();
     } else {
@@ -133,8 +132,12 @@ function output(){
 }
 
 function clearInputs(){
-  document.getElementById('MatrixInputContainer1').reset();
-  document.getElementById('MatrixInputContainer2').reset();
-  document.getElementById('MatrixOutContainer').reset();
+  getById('MatrixInputContainer1').reset();
+  getById('MatrixInputContainer2').reset();
+  getById('MatrixOutContainer').reset();
+}
+
+function getById(DOMElement){
+    return document.getElementById(DOMElement);
 }
 
